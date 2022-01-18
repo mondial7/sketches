@@ -3,17 +3,16 @@ const config = {
   height: 400,
   centerX: 200,
   centerY: 200,
+  span: 10,
   palette: {
     background: "#123456",
     one: "#00ffff",
     two: "#ff0000",
-    three: 100,
+    three: "#888888",
     four: "#ffff00"
-  }
-}
-
-const randomAngle = () => {
-  return random(0, 360).toFixed()
+  },
+  items: [],
+  count: 100
 }
 
 const rotateFromTheMiddle = (angle) => {
@@ -27,6 +26,19 @@ const fromTheMiddle = (callback) => {
   translate(config.centerX, config.centerY)
   callback()
   pop()
+}
+
+const randomAngle = () => {
+  return random(0, 360).toFixed()
+}
+
+const randomSunSize = () => {
+  const safeSpan = config.span
+  const breakPoint = config.width / 4
+  const limitPoint = config.width / 3
+  const start = random(safeSpan, breakPoint - safeSpan).toFixed()
+  const end = random(breakPoint, limitPoint - safeSpan).toFixed()
+  return [start, end]
 }
 
 const sunlights = (start, end) => {
@@ -57,29 +69,20 @@ const sunlights = (start, end) => {
   })
 }
 
-let suns = []
+
 function setup() {
   createCanvas(config.width, config.height);
-  suns = [
-    {
-      size: [40, 80],
-      angle: randomAngle()
-    },
-    {
-      size: [50, 90],
-      angle: randomAngle()
-    },
-    {
-      size: [60, 100],
-      angle: randomAngle()
-    }
-  ]
-}
 
-function draw() {  
+  for(let i=0; i < config.count; i++) {
+    config.items.push({
+      size: randomSunSize(),
+      angle: randomAngle()
+    })
+  }
+
   background(config.palette.background);
   
-  suns.forEach((sun) => {
+  config.items.forEach((sun) => {
     rotateFromTheMiddle(sun.angle)
     sunlights(sun.size[0], sun.size[1])
   })
