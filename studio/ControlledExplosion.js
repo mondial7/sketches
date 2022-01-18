@@ -20,44 +20,37 @@ const randomAngle = () => {
 const randomSunSize = () => {
   const safeSpan = config.span
   const breakPoint = config.width / 4
-  const limitPoint = config.width / 2
+  const limitPoint = config.width / 3
   const start = random(safeSpan, breakPoint - safeSpan).toFixed()
   const end = random(breakPoint, limitPoint - safeSpan).toFixed()
   return [start, end]
 }
 
 const sunlights = (start, end) => {
-  const drawShape = () => {
-    const d = random(0, 1).toFixed()
-    circle(start, end, d)
-  }
+  const x1 = start, y1 = start, x2 = end, y2 = end
 
   fromTheMiddle(() => {
     rotate(0)
-    fill(config.palette.one)
     stroke(config.palette.one)
-    drawShape()
+    line(x1, y1, x2, y2) 
   })
 
   fromTheMiddle(() => {
     rotate(PI/2)
-    fill(config.palette.two)
     stroke(config.palette.two)
-    drawShape()
+    line(x1, y1, x2, y2)
   })
 
   fromTheMiddle(() => {
     rotate(PI)
-    fill(config.palette.three)
     stroke(config.palette.three)
-    drawShape()
+    line(x1, y1, x2, y2)
   })
 
   fromTheMiddle(() => {
     rotate(PI*3/2)
-    fill(config.palette.four)
     stroke(config.palette.four)
-    drawShape()
+    line(x1, y1, x2, y2)
   })
 }
 
@@ -68,7 +61,7 @@ function setup() {
     height: windowHeight,
     centerX: windowWidth / 2,
     centerY: windowHeight / 2,
-    span: 0,
+    span: 10,
     palette: {
       background: "#123456",
       one: "#00ffff",
