@@ -1,6 +1,8 @@
 const config = {
   width: 400,
   height: 400,
+  centerX: 200,
+  centerY: 200,
   palette: {
     background: "#123456",
     one: "#00ffff",
@@ -15,14 +17,14 @@ const randomAngle = () => {
 }
 
 const rotateFromTheMiddle = (angle) => {
-  translate(config.width / 2, config.height / 2)
+  translate(config.centerX, config.centerY)
   rotate(angle)
-  translate(-config.width / 2, -config.height / 2)
+  translate(-config.centerX, -config.centerY)
 }
 
 const fromTheMiddle = (callback) => {
   push()
-  translate(config.width / 2, config.height / 2)
+  translate(config.centerX, config.centerY)
   callback()
   pop()
 }
@@ -55,16 +57,30 @@ const sunlights = (start, end) => {
   })
 }
 
+let suns = []
 function setup() {
   createCanvas(config.width, config.height);
+  suns = [
+    {
+      size: [40, 80],
+      angle: randomAngle()
+    },
+    {
+      size: [50, 90],
+      angle: randomAngle()
+    },
+    {
+      size: [60, 100],
+      angle: randomAngle()
+    }
+  ]
 }
 
 function draw() {  
   background(config.palette.background);
-
   
-  for(let i=0; i<3; i++) {
-    rotateFromTheMiddle(randomAngle())
-    sunlights(50, 100)
-  }
+  suns.forEach((sun) => {
+    rotateFromTheMiddle(sun.angle)
+    sunlights(sun.size[0], sun.size[1])
+  })
 }
