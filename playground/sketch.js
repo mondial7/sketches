@@ -3,9 +3,21 @@ const config = {
   height: 400,
   palette: {
     background: "#123456",
-    primary: "#00ffff",
-    secondary: "#ff0000"
+    one: "#00ffff",
+    two: "#ff0000",
+    three: 100,
+    four: "#ffff00"
   }
+}
+
+const randomAngle = () => {
+  return random(0, 360).toFixed()
+}
+
+const rotateFromTheMiddle = (angle) => {
+  translate(config.width / 2, config.height / 2)
+  rotate(angle)
+  translate(-config.width / 2, -config.height / 2)
 }
 
 const fromTheMiddle = (callback) => {
@@ -15,37 +27,44 @@ const fromTheMiddle = (callback) => {
   pop()
 }
 
+const sunlights = (start, end) => {
+  const x1 = start, y1 = start, x2 = end, y2 = end
+
+  fromTheMiddle(() => {
+    rotate(0)
+    stroke(config.palette.one)
+    line(x1, y1, x2, y2) 
+  })
+
+  fromTheMiddle(() => {
+    rotate(PI/2)
+    stroke(config.palette.two)
+    line(x1, y1, x2, y2)
+  })
+
+  fromTheMiddle(() => {
+    rotate(PI)
+    stroke(config.palette.three)
+    line(x1, y1, x2, y2)
+  })
+
+  fromTheMiddle(() => {
+    rotate(PI*3/2)
+    stroke(config.palette.four)
+    line(x1, y1, x2, y2)
+  })
+}
+
 function setup() {
   createCanvas(config.width, config.height);
 }
 
-let count = 0
-
 function draw() {  
   background(config.palette.background);
-  count++
 
-  fromTheMiddle(() => {
-    rotate(0 + count)
-    stroke(config.palette.primary)
-    line(50, 50, 100, 100)  
-  })
-
-  fromTheMiddle(() => {
-    rotate(PI/2  + count)
-    stroke(config.palette.secondary)
-    line(50, 50, 100, 100)
-  })
-
-  fromTheMiddle(() => {
-    rotate(PI  + count)
-    stroke(100)
-    line(50, 50, 100, 100)  
-  })
-
-  fromTheMiddle(() => {
-    rotate(PI*1.5  + count)
-    stroke("#ffff00")
-    line(50, 50, 100, 100)
-  })
+  
+  for(let i=0; i<3; i++) {
+    rotateFromTheMiddle(randomAngle())
+    sunlights(50, 100)
+  }
 }
