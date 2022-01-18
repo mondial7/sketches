@@ -1,19 +1,4 @@
-const config = {
-  width: 400,
-  height: 400,
-  centerX: 200,
-  centerY: 200,
-  span: 10,
-  palette: {
-    background: "#123456",
-    one: "#00ffff",
-    two: "#ff0000",
-    three: "#888888",
-    four: "#ffff00"
-  },
-  items: [],
-  count: 100
-}
+let config = {}
 
 const rotateFromTheMiddle = (angle) => {
   translate(config.centerX, config.centerY)
@@ -71,6 +56,23 @@ const sunlights = (start, end) => {
 
 
 function setup() {
+  config = {
+    width: windowWidth,
+    height: windowHeight,
+    centerX: windowWidth / 2,
+    centerY: windowHeight / 2,
+    span: 10,
+    palette: {
+      background: "#123456",
+      one: "#00ffff",
+      two: "#ff0000",
+      three: "#888888",
+      four: "#ffff00"
+    },
+    items: [],
+    count: 100
+  }
+
   createCanvas(config.width, config.height);
 
   for(let i=0; i < config.count; i++) {
