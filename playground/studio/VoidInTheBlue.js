@@ -72,7 +72,7 @@ const VoidInTheBlue = (p5) => {
         four: "#ffff00"
       },
       items: [],
-      count: 6969
+      count: 69
     }
 
     p5.createCanvas(config.width, config.height);
@@ -85,6 +85,15 @@ const VoidInTheBlue = (p5) => {
     }
 
     p5.background(config.palette.background);
+    p5.frameRate(10)
+    p5.angleMode(p5.DEGREES)
+  }
+
+  let angle = 0
+  p5.draw = () => {
+    p5.background(config.palette.background);
+
+    rotateFromTheMiddle(angle++)
     
     config.items.forEach((sun) => {
       rotateFromTheMiddle(sun.angle)

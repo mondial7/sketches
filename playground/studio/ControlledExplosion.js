@@ -80,7 +80,23 @@ const ControlledExplosion = (p5) => {
         angle: randomAngle()
       })
     }
+
+    p5.frameRate(10)
+    p5.angleMode(p5.DEGREES)
+  }
+
+  let angle = 0
+  p5.draw = () => {
+    p5.clear()
+
+    rotateFromTheMiddle(angle--)
     
+    config.items.shift()
+    config.items.push({
+      size: randomSunSize(),
+      angle: randomAngle()
+    })
+
     config.items.forEach((sun) => {
       rotateFromTheMiddle(sun.angle)
       sunlights(sun.size[0], sun.size[1])
