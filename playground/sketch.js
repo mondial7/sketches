@@ -71,7 +71,7 @@ const VoidInTheBlue = (p5) => {
       centerY: p5.windowHeight / 2,
       span: 0,
       palette: {
-        background: "#123456",
+        background: "white",
         one: "#00ffff",
         two: "#ff0000",
         three: "#888888",
