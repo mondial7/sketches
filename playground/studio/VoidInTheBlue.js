@@ -1,4 +1,4 @@
-const ControlledExplosion = (p5) => {
+const VoidInTheBlue = (p5) => {
   let config = {}
 
   const rotateFromTheMiddle = (angle) => {
@@ -21,7 +21,7 @@ const ControlledExplosion = (p5) => {
   const randomSunSize = () => {
     const safeSpan = config.span
     const breakPoint = config.width / 4
-    const limitPoint = config.width / 3
+    const limitPoint = config.width / 2
     const start = p5.random(safeSpan, breakPoint - safeSpan).toFixed()
     const end = p5.random(breakPoint, limitPoint - safeSpan).toFixed()
     return [start, end]
@@ -29,8 +29,10 @@ const ControlledExplosion = (p5) => {
 
   const sunlights = (start, end) => {
     const drawShape = (color) => {
+      const d = p5.random(0, 1).toFixed()
+      p5.fill(color)
       p5.stroke(color)
-      p5.line(start, start, end, end) 
+      p5.circle(start, end, d)
     }
 
     fromTheMiddle(() => {
@@ -61,15 +63,16 @@ const ControlledExplosion = (p5) => {
       height: p5.windowHeight,
       centerX: p5.windowWidth / 2,
       centerY: p5.windowHeight / 2,
-      span: 30,
+      span: 0,
       palette: {
+        background: "#123456",
         one: "#00ffff",
         two: "#ff0000",
         three: "#888888",
         four: "#ffff00"
       },
       items: [],
-      count: 69
+      count: 6969
     }
 
     p5.createCanvas(config.width, config.height);
@@ -80,6 +83,8 @@ const ControlledExplosion = (p5) => {
         angle: randomAngle()
       })
     }
+
+    p5.background(config.palette.background);
     
     config.items.forEach((sun) => {
       rotateFromTheMiddle(sun.angle)
@@ -88,4 +93,4 @@ const ControlledExplosion = (p5) => {
   }
 }
 
-new p5(ControlledExplosion, 'controlledExplosion')
+new p5(VoidInTheBlue, 'voidInTheBlue')
