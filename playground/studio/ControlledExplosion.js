@@ -39,17 +39,17 @@ const ControlledExplosion = (p5) => {
     })
 
     fromTheMiddle(() => {
-      p5.rotate(p5.PI/2)
+      p5.rotate(90)
       drawShape(config.palette.two)
     })
 
     fromTheMiddle(() => {
-      p5.rotate(p5.PI)
+      p5.rotate(180)
       drawShape(config.palette.three)
     })
 
     fromTheMiddle(() => {
-      p5.rotate(p5.PI*3/2)
+      p5.rotate(270)
       drawShape(config.palette.four)
     })
   }
@@ -69,19 +69,10 @@ const ControlledExplosion = (p5) => {
         four: "#ffff00"
       },
       items: [],
-      count: 69
+      count: 256
     }
 
     p5.createCanvas(config.width, config.height);
-
-    for(let i=0; i < config.count; i++) {
-      config.items.push({
-        size: randomSunSize(),
-        angle: randomAngle()
-      })
-    }
-
-    p5.frameRate(10)
     p5.angleMode(p5.DEGREES)
   }
 
@@ -90,12 +81,13 @@ const ControlledExplosion = (p5) => {
     p5.clear()
 
     rotateFromTheMiddle(angle--)
-    
-    config.items.shift()
-    config.items.push({
-      size: randomSunSize(),
-      angle: randomAngle()
-    })
+
+    if (config.items.length < config.count) {
+      config.items.push({
+        size: randomSunSize(),
+        angle: randomAngle()
+      })
+    }
 
     config.items.forEach((sun) => {
       rotateFromTheMiddle(sun.angle)
