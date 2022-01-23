@@ -5,9 +5,9 @@ function getRandom(min, max) {
 }
 
 class Sun {
-  constructor(painter, drawShape, config) {
+  constructor(painter, config, sunLightShape) {
     this.painter = painter
-    this.drawShape = drawShape
+    this.sunLightShape = sunLightShape
     this.config = config
     this.items = []
   }
@@ -25,26 +25,26 @@ class Sun {
 
   _randomSize() {
     const safeSpan = this.config.span
-    const breakPoint = this.config.width / 4
-    const limitPoint = this.config.width / 3
+    const breakPoint = this.painter.width / 4
+    const limitPoint = this.painter.width / 3
     const start = getRandom(safeSpan, breakPoint - safeSpan)
     const end = getRandom(breakPoint, limitPoint - safeSpan)
     return [start, end]
-  }
-
-  _renderSunlightSet(start, end) {
-    [0, 90, 180, 270].forEach((angle, i) => {
-      this.painter.fromTheMiddle(() => {
-        this.painter.rotate(angle)
-        this.drawShape(this.config.palette[i], start, end)
-      })
-    })
   }
 
   render() {
     this.items.forEach((setup) => {
       this.painter.rotateFromTheMiddle(setup.angle)
       this._renderSunlightSet(setup.size[0], setup.size[1])
+    })
+  }
+
+  _renderSunlightSet(start, end) {
+    [0, 90, 180, 270].forEach((cardinalAngle, i) => {
+      this.painter.rotateFromTheMiddle(cardinalAngle)
+      this.painter.fromTheMiddle(() => {
+        this.sunLightShape(this.config.palette[i], start, end)
+      })
     })
   }
 }
@@ -55,21 +55,29 @@ class Painter {
     this.config = config
     
     this.angle = 0
-    this.centerX = this.config.width / 2
-    this.centerY = this.config.height / 2
+    this.width = this.engine.windowWidth
+    this.height = this.engine.windowHeight
+    this.centerX = this.width / 2
+    this.centerY = this.height / 2
+ 
+    this.initCanvas()
+  }
+
+  initCanvas() {
+    this.engine.createCanvas(this.width, this.height)
+    this.engine.angleMode(this.engine.DEGREES)
   }
 
   fromTheMiddle(callback) {
-    this.engine.push()
     this.engine.translate(this.centerX, this.centerY)
     callback()
-    this.engine.pop()
+    this.engine.translate(-this.centerX, -this.centerY)
   }
 
   rotateFromTheMiddle(angle) {
-    this.engine.translate(this.centerX, this.centerY)
-    this.engine.rotate(angle)
-    this.engine.translate(-this.centerX, -this.centerY)
+    this.fromTheMiddle(() => {
+      this.engine.rotate(angle)
+    })
   }
 
   getRandomAngle() {
@@ -90,25 +98,18 @@ const ControlledExplosion = (p5) => {
   let painter
   let sun
 
-  this.drawShape = (color, start, end) => {
-    p5.stroke(color)
-    p5.line(start, start, end, end)
-  }
-
   p5.setup = () => {
     config = {
-      width: p5.windowWidth,
-      height: p5.windowHeight,
-      span: 250,
+      span: 32,
       palette: ["#EDAE49","#FE4A49","#EDAE49","#FE4A49"],
       count: 256
     }
 
-    p5.createCanvas(config.width, config.height);
-    p5.angleMode(p5.DEGREES)
-
     painter = new Painter(p5, config)
-    sun = new Sun(painter, drawShape, config)
+    sun = new Sun(painter, config, (color, start, end) => {
+      p5.stroke(color)
+      p5.line(start, start, end, end)
+    })
   }
 
   p5.draw = () => {
