@@ -65,11 +65,11 @@ const VoidInTheBlue = (p5) => {
       centerY: p5.windowHeight / 2,
       span: 0,
       palette: {
-        background: "#111",
-        one: "#00ffff",
-        two: "#ff0000",
-        three: "#888888",
-        four: "#ffff00"
+        background: "#1F363D",
+        one: "#7785AC",
+        two: "#b1f8f2",
+        three: "#1F363D",
+        four: "#1F363D"
       },
       items: [],
       count: 256

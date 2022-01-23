@@ -63,10 +63,10 @@ const ControlledExplosion = (p5) => {
       centerY: p5.windowHeight / 2,
       span: 30,
       palette: {
-        one: "#00ffff",
-        two: "#ff0000",
-        three: "#888888",
-        four: "#ffff00"
+        one: "#1F363D",
+        two: "#1F363D",
+        three: "#EDAE49",
+        four: "#FE4A49"
       },
       items: [],
       count: 256
