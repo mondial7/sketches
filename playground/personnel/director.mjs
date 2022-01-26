@@ -2,7 +2,7 @@ import { getRandom } from "../canvas/math.mjs"
 
 export default class Director {
   constructor(projects) {
-    this.portfolio = projects.map(this.toProjectPieces)
+    this.portfolio = Array.from(projects)
     this.expositions = []
 
     this.presentsNextExposition()
@@ -14,30 +14,17 @@ export default class Director {
     const nextExpositionDirection = getRandom(1, this.portfolio.length)-1
     const nextExposition = this.portfolio[nextExpositionDirection]
 
-    this.openTheExpo(nextExposition)
+    this.openTheExposition(nextExposition)
   }
 
-  openTheExpo(exposition) {
-    Object.entries(exposition).forEach(([layer, expo]) => {
-      this.expositions.push(new p5(expo, layer))
+  openTheExposition(exposition) {
+    Object.entries(exposition).forEach(([title, expo], i) => {
+      this.expositions.push(new p5(expo, `layer-${i+1}`))
+      document.getElementById("title").innerText = title
     })
   }
 
   cleanUpTheStudio() {
     this.expositions.forEach(e => e.remove())
-  }
-
-  toProjectPieces (project) {
-    const compositeProject = {}
-    
-    if (project instanceof Array) {
-      project.forEach((piece, i) => {
-        compositeProject[`layer-${i+1}`] = piece
-      })
-    } else {
-      compositeProject['layer-1'] = project
-    }
-    
-    return compositeProject
   }
 }

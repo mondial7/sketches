@@ -8,15 +8,25 @@ import { WarmHorizon } from "./WarmHorizon.js"
 import { NaturalStrings } from "./NaturalStrings.js"
 
 const jean = new Director([
-  [
+  {
     VoidInTheBlue,
     ControlledExplosion
-  ],
-  WildPhoenix,
-  NakedContent,
-  NoWayOut,
-  WarmHorizon,
-  NaturalStrings
+  },
+  {
+    WildPhoenix
+  },
+  {
+    NakedContent
+  },
+  {
+    NoWayOut
+  },
+  {
+    WarmHorizon
+  },
+  {
+    NaturalStrings
+  }
 ])
 
 const tour = setInterval(() => {
