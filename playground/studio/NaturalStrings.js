@@ -33,7 +33,6 @@ export const NaturalStrings = (p5) => {
 
       if (!shapes[`${start}_${end}`]) {
         shapes[`${start}_${end}`] = getRandom(1, 3)
-        console.log(shapes)
       }
       shapesSelector[shapes[`${start}_${end}`]-1](start, end)
     })
