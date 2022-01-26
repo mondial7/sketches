@@ -1,4 +1,4 @@
-import Painter from "../canvas/painter.mjs"
+import Painter from "../personnel/painter.mjs"
 import Sun from "../canvas/sun.mjs"
 
 export const NoWayOut = (p5) => {

@@ -1,4 +1,4 @@
-import { getRandom } from "./math.mjs"
+import { getRandom } from "../canvas/math.mjs"
 
 export default class Painter {
   constructor(engine, config) {
