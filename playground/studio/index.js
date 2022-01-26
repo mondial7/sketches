@@ -2,10 +2,11 @@ import Director from "../personnel/director.mjs"
 import { ControlledExplosion } from "./ControlledExplosion.js"
 import { VoidInTheBlue } from "./VoidInTheBlue.js"
 import { WildPhoenix } from "./WildPhoenix.js"
-import { NakedContent } from "./NakedContent.js"
+import { ColdSnowballs } from "./ColdSnowballs.js"
 import { NoWayOut } from "./NoWayOut.js"
 import { WarmHorizon } from "./WarmHorizon.js"
 import { NaturalStrings } from "./NaturalStrings.js"
+import { NakedContent } from "./NakedContent.js"
 
 const jean = new Director([
   {
@@ -17,6 +18,9 @@ const jean = new Director([
   },
   {
     NakedContent
+  },
+  {
+    ColdSnowballs
   },
   {
     NoWayOut

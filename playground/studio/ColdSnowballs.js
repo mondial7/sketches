@@ -1,17 +1,18 @@
 import Painter from "../personnel/painter.mjs"
 import Sun from "../canvas/sun.mjs"
 
-export const NakedContent = (p5) => {
+export const ColdSnowballs = (p5) => {
   let painter
   let phoenix
   let phoenixConfig = {}
   let dust
   let dustConfig = {}
 
-  const drawPicker = (words) => (color, start, end) => {
-    const letter = words[start % words.length]
+  const drawLettersOf = (letters) => (color, start, end) => {
+    const letter = letters[start % letters.length]
     p5.fill(color)
-    p5.text(letter, start, end);
+    p5.stroke(color)
+    p5.rect(start, end, start, end);
   }
 
   p5.setup = () => {
@@ -25,7 +26,7 @@ export const NakedContent = (p5) => {
     }
 
     painter = new Painter(p5, phoenixConfig)
-    phoenix = new Sun(painter, phoenixConfig, drawPicker('phoenix'.split('')))
+    phoenix = new Sun(painter, phoenixConfig, drawLettersOf('phoenix'.split('')))
 
     dustConfig = {
       sun: {
@@ -37,7 +38,7 @@ export const NakedContent = (p5) => {
       count: 512
     }
 
-    dust = new Sun(painter, dustConfig, drawPicker('void'.split('')))
+    dust = new Sun(painter, dustConfig, drawLettersOf('void'.split('')))
   }
 
   p5.draw = () => {
