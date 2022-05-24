@@ -1,11 +1,13 @@
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../personnel/painter.mjs' or i... Remove this comment to see the full error message
 import Painter from "../personnel/painter.mjs"
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../canvas/sun.mjs' or its corr... Remove this comment to see the full error message
 import Sun from "../canvas/sun.mjs"
 
-export const WildPhoenix = (p5) => {
-  let painter
-  let phoenix
+export const WildPhoenix = (p5: any) => {
+  let painter: any
+  let phoenix: any
   let phoenixConfig = {}
-  let dust
+  let dust: any
   let dustConfig = {}
 
   p5.setup = () => {
@@ -20,7 +22,7 @@ export const WildPhoenix = (p5) => {
 
     painter = new Painter(p5, phoenixConfig)
 
-    phoenix = new Sun(painter, phoenixConfig, (color, start, end) => {
+    phoenix = new Sun(painter, phoenixConfig, (color: any, start: any, end: any) => {
       p5.stroke(color)
       p5.line(start, start, end, end)
     })
@@ -36,7 +38,7 @@ export const WildPhoenix = (p5) => {
       count: 256
     }
 
-    dust = new Sun(painter, dustConfig, (color, start, end) => {
+    dust = new Sun(painter, dustConfig, (color: any, start: any, end: any) => {
       const d = p5.random(0, 1).toFixed()
       p5.fill(color)
       p5.stroke(color)
@@ -47,6 +49,7 @@ export const WildPhoenix = (p5) => {
   }
 
   p5.draw = () => {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'background' does not exist on type '{}'.
     p5.background(dustConfig.background)
     
     phoenix.fillOneMoreItem()

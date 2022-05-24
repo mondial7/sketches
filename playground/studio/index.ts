@@ -1,3 +1,4 @@
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../personnel/director.mjs' or ... Remove this comment to see the full error message
 import Director from "../personnel/director.mjs"
 import { ControlledExplosion } from "./ControlledExplosion.js"
 import { VoidInTheBlue } from "./VoidInTheBlue.js"

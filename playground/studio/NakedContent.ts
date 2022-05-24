@@ -1,14 +1,16 @@
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../personnel/painter.mjs' or i... Remove this comment to see the full error message
 import Painter from "../personnel/painter.mjs"
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../canvas/sun.mjs' or its corr... Remove this comment to see the full error message
 import Sun from "../canvas/sun.mjs"
 
-export const NakedContent = (p5) => {
+export const NakedContent = (p5: any) => {
   let painter
-  let phoenix
+  let phoenix: any
   let phoenixConfig = {}
-  let dust
+  let dust: any
   let dustConfig = {}
 
-  const drawPicker = (words) => (color, start, end) => {
+  const drawPicker = (words: any) => (color: any, start: any, end: any) => {
     const letter = words[start % words.length]
     p5.fill(color)
     p5.text(letter, start, end);
@@ -41,6 +43,7 @@ export const NakedContent = (p5) => {
   }
 
   p5.draw = () => {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'background' does not exist on type '{}'.
     p5.background(dustConfig.background)
     
     phoenix.fillOneMoreItem()

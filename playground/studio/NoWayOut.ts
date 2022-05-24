@@ -1,11 +1,13 @@
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../personnel/painter.mjs' or i... Remove this comment to see the full error message
 import Painter from "../personnel/painter.mjs"
+// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../canvas/sun.mjs' or its corr... Remove this comment to see the full error message
 import Sun from "../canvas/sun.mjs"
 
-export const NoWayOut = (p5) => {
-  let painter
-  let phoenix
+export const NoWayOut = (p5: any) => {
+  let painter: any
+  let phoenix: any
   let phoenixConfig = {}
-  let dust
+  let dust: any
   let dustConfig = {}
 
   p5.setup = () => {
@@ -19,7 +21,7 @@ export const NoWayOut = (p5) => {
     }
 
     painter = new Painter(p5, phoenixConfig)
-    phoenix = new Sun(painter, phoenixConfig, (color, start, end) => {
+    phoenix = new Sun(painter, phoenixConfig, (color: any, start: any, end: any) => {
       p5.fill(color)
       p5.rect(start, end, start/3, end/3);
     })
@@ -34,7 +36,7 @@ export const NoWayOut = (p5) => {
       count: 256
     }
 
-    dust = new Sun(painter, dustConfig, (color, start, end) => {
+    dust = new Sun(painter, dustConfig, (color: any, start: any, end: any) => {
       p5.push()
       p5.fill(color)
       p5.scale(0.5)
@@ -44,6 +46,7 @@ export const NoWayOut = (p5) => {
   }
 
   p5.draw = () => {
+    // @ts-expect-error ts-migrate(2339) FIXME: Property 'background' does not exist on type '{}'.
     p5.background(dustConfig.background)
     
     phoenix.fillOneMoreItem()
