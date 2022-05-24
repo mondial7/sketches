@@ -1,0 +1,16 @@
+{
+  "name": "sketches",
+  "version": "1.0.0",
+  "description": "First trials with p5js",
+  "main": "playground/index.html",
+  "repository": "https://github.com/mondial7/sketches.git",
+  "author": "Marco Mondini <mmondini@mondspace.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "serve playground"
+  },
+  "dependencies": {
+    "serve": "^13.0.2"
+  }
+}

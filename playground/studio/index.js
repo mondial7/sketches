@@ -8,7 +8,7 @@ import { WarmHorizon } from "./WarmHorizon.js"
 import { NaturalStrings } from "./NaturalStrings.js"
 import { NakedContent } from "./NakedContent.js"
 
-const jean = new Director([
+const frank = new Director([
   {
     VoidInTheBlue,
     ControlledExplosion
@@ -34,15 +34,15 @@ const jean = new Director([
 ])
 
 const tour = setInterval(() => {
-  jean.presentsNextExposition()
+  frank.presentsNextExposition()
 }, 4000)
 
-window.addEventListener("touchstart", () => {
+document.addEventListener("touchstart", () => {
   clearInterval(tour)
-  jean.presentsNextExposition()
+  frank.presentsNextExposition()
 })
 
-window.addEventListener("click", () => {
+document.addEventListener("click", () => {
   clearInterval(tour)
-  jean.presentsNextExposition()
+  frank.presentsNextExposition()
 })
