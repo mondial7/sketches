@@ -1,17 +1,14 @@
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../personnel/painter.mjs' or i... Remove this comment to see the full error message
-import Painter from "../personnel/painter.mjs"
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../canvas/sun.mjs' or its corr... Remove this comment to see the full error message
-import Sun from "../canvas/sun.mjs"
+import Painter from "../personnel/painter"
+import Sun from "../canvas/sun"
 
 export const ColdSnowballs = (p5: any) => {
   let painter
   let phoenix: any
   let phoenixConfig = {}
   let dust: any
-  let dustConfig = {}
+  let dustConfig: any = {}
 
-  const drawLettersOf = (letters: any) => (color: any, start: any, end: any) => {
-    const letter = letters[start % letters.length]
+  const drawLettersOf = () => (color: any, start: any, end: any) => {
     p5.fill(color)
     p5.stroke(color)
     p5.rect(start, end, start, end);
@@ -28,7 +25,7 @@ export const ColdSnowballs = (p5: any) => {
     }
 
     painter = new Painter(p5, phoenixConfig)
-    phoenix = new Sun(painter, phoenixConfig, drawLettersOf('phoenix'.split('')))
+    phoenix = new Sun(painter, phoenixConfig, drawLettersOf())
 
     dustConfig = {
       sun: {
@@ -40,11 +37,10 @@ export const ColdSnowballs = (p5: any) => {
       count: 512
     }
 
-    dust = new Sun(painter, dustConfig, drawLettersOf('void'.split('')))
+    dust = new Sun(painter, dustConfig, drawLettersOf())
   }
 
   p5.draw = () => {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'background' does not exist on type '{}'.
     p5.background(dustConfig.background)
     
     phoenix.fillOneMoreItem()

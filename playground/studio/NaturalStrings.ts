@@ -1,9 +1,6 @@
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../personnel/painter.mjs' or i... Remove this comment to see the full error message
-import Painter from "../personnel/painter.mjs"
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../canvas/sun.mjs' or its corr... Remove this comment to see the full error message
-import Sun from "../canvas/sun.mjs"
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../canvas/math.mjs' or its cor... Remove this comment to see the full error message
-import { getRandom } from "../canvas/math.mjs"
+import Painter from "../personnel/painter"
+import Sun from "../canvas/sun"
+import { getRandom } from "../canvas/math"
 
 export const NaturalStrings = (p5: any) => {
   let painter: any

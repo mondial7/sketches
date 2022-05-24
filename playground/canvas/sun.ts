@@ -1,10 +1,10 @@
-import { getRandom } from "./math.mjs"
+import { getRandom } from "./math"
+import Painter from "../personnel/painter";
 
 export default class Sun {
-  constructor(painter, config, sunLightShape) {
-    this.painter = painter
-    this.sunLightShape = sunLightShape
-    this.config = config
+  items: any[]
+
+  constructor(private painter: Painter, private config: any, private sunLightShape: any) {
     this.items = []
   }
 
@@ -35,7 +35,7 @@ export default class Sun {
     })
   }
 
-  _renderSunlightSet(start, end) {
+  _renderSunlightSet(start: number, end: number) {
     [0, 90, 180, 270].forEach((cardinalAngle, i) => {
       this.painter.rotateFromTheMiddle(cardinalAngle)
       this.painter.fromTheMiddle(() => {

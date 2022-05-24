@@ -1,8 +1,11 @@
 import p5 from "p5";
-import { getRandom } from "../canvas/math.mjs"
+import { getRandom } from "../canvas/math"
 
 export default class Director {
-  constructor(projects) {
+  portfolio: any[]
+  expositions: any[]
+
+  constructor(projects: any) {
     this.portfolio = Array.from(projects)
     this.expositions = []
 
@@ -18,12 +21,15 @@ export default class Director {
     this.openTheExposition(nextExposition)
   }
 
-  openTheExposition(exposition) {
-    Object.entries(exposition).forEach(([title, expo], i) => {
+  openTheExposition(exposition: any) {
+    Object.entries(exposition).forEach(([title, expo]: [string, any], i) => {
       const node = document.getElementById(`layer-${i + 1}`);
-      const instance = new p5(expo, node);
+      const instance = new p5(expo, node ?? undefined);
       this.expositions.push(instance)
-      document.getElementById("title").innerText = title
+      const titleElement = document.getElementById("title");
+      if (titleElement) {
+        titleElement.innerHTML = title
+      }
     })
   }
 

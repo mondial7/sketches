@@ -1,13 +1,12 @@
-// @ts-expect-error ts-migrate(2307) FIXME: Cannot find module '../personnel/director.mjs' or ... Remove this comment to see the full error message
-import Director from "../personnel/director.mjs"
-import { ControlledExplosion } from "./ControlledExplosion.js"
-import { VoidInTheBlue } from "./VoidInTheBlue.js"
-import { WildPhoenix } from "./WildPhoenix.js"
-import { ColdSnowballs } from "./ColdSnowballs.js"
-import { NoWayOut } from "./NoWayOut.js"
-import { WarmHorizon } from "./WarmHorizon.js"
-import { NaturalStrings } from "./NaturalStrings.js"
-import { NakedContent } from "./NakedContent.js"
+import Director from "../personnel/director"
+import { ControlledExplosion } from "./ControlledExplosion"
+import { VoidInTheBlue } from "./VoidInTheBlue"
+import { WildPhoenix } from "./WildPhoenix"
+import { ColdSnowballs } from "./ColdSnowballs"
+import { NoWayOut } from "./NoWayOut"
+import { WarmHorizon } from "./WarmHorizon"
+import { NaturalStrings } from "./NaturalStrings"
+import { NakedContent } from "./NakedContent"
 
 const frank = new Director([
   {

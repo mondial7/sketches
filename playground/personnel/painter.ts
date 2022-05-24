@@ -1,10 +1,13 @@
-import { getRandom } from "../canvas/math.mjs"
+import { getRandom } from "../canvas/math"
 
 export default class Painter {
-  constructor(engine, config) {
-    this.engine = engine
-    this.config = config
-    
+  angle: number
+  width: number
+  height: number
+  centerX: number
+  centerY: number
+
+  constructor(private engine: any, private config: any) {
     this.angle = 0
     this.width = this.engine.windowWidth
     this.height = this.engine.windowHeight
@@ -27,17 +30,17 @@ export default class Painter {
     return getRandom(0, 360)
   }
 
-  rotate(angle) {
+  rotate(angle: number) {
     this.engine.rotate(angle)
   }
 
-  fromTheMiddle(callback) {
+  fromTheMiddle(callback: () => void) {
     this.engine.translate(this.centerX, this.centerY)
     callback()
     this.engine.translate(-this.centerX, -this.centerY)
   }
 
-  rotateFromTheMiddle(angle) {
+  rotateFromTheMiddle(angle: number) {
     this.fromTheMiddle(() => {
       this.rotate(angle)
     })

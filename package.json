@@ -2,22 +2,18 @@
   "name": "sketches",
   "version": "1.0.0",
   "description": "First trials with p5js",
-  "main": "playground/index.html",
   "repository": "https://github.com/mondial7/sketches.git",
   "author": "Marco Mondini <mmondini@mondspace.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "serve playground"
+    "start": "parcel playground/index.html --open"
   },
   "dependencies": {
-    "serve": "^13.0.2"
+    "p5": "^1.4.1"
   },
   "devDependencies": {
     "@types/p5": "^1.4.2",
-    "p5": "^1.4.1",
-    "parcel": "^2.5.0",
-    "ts-migrate": "^0.1.28",
-    "typescript": "^4.7.2"
+    "parcel": "^2.5.0"
   }
 }
