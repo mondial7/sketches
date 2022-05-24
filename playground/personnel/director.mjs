@@ -1,3 +1,4 @@
+import p5 from "p5";
 import { getRandom } from "../canvas/math.mjs"
 
 export default class Director {
@@ -19,7 +20,9 @@ export default class Director {
 
   openTheExposition(exposition) {
     Object.entries(exposition).forEach(([title, expo], i) => {
-      this.expositions.push(new p5(expo, `layer-${i+1}`))
+      const node = document.getElementById(`layer-${i + 1}`);
+      const instance = new p5(expo, node);
+      this.expositions.push(instance)
       document.getElementById("title").innerText = title
     })
   }
