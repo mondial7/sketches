@@ -8,13 +8,18 @@
   "private": true,
   "scripts": {
     "start": "parcel playground/index.html --open",
-    "build": "parcel build playground/index.html"
+    "build": "parcel build playground/index.html",
+    "test": "jest --watch"
   },
   "dependencies": {
     "p5": "^1.4.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/preset-env": "^7.18.0",
     "@types/p5": "^1.4.2",
+    "babel-jest": "^28.1.0",
+    "jest": "^28.1.0",
     "parcel": "^2.5.0"
   }
 }
