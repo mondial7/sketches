@@ -16,7 +16,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",
-    "@babel/preset-env": "^7.18.0",
+    "@babel/preset-typescript": "^7.17.12",
+    "@parcel/babel-preset-env": "^2.5.0",
     "@types/p5": "^1.4.2",
     "babel-jest": "^28.1.0",
     "jest": "^28.1.0",

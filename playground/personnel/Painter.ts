@@ -1,4 +1,3 @@
-import { getRandom } from "../canvas/math"
 import {Renderer, RendererConfig} from "../canvas/Renderer";
 
 export default class Painter {
@@ -25,10 +24,6 @@ export default class Painter {
     if (this.config.background) {
       this.engine.background(this.config.background);
     }
-  }
-
-  getRandomAngle() {
-    return getRandom(0, 360)
   }
 
   rotate(angle: number) {
