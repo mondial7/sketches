@@ -1,10 +1,26 @@
 import { getRandom } from "./math"
-import Painter from "../personnel/painter";
+import Painter from "../personnel/Painter";
+import {RendererConfig} from "./Renderer";
+
+export interface SunConfig extends RendererConfig {
+  palette: string[];
+  count: number;
+  sun: {
+    limit: number;
+    span: number;
+    breakPoint?: number;
+  }
+}
+
+export type SunLightShape = (color: string, start: number, end: number) => void;
 
 export default class Sun {
-  items: any[]
+  items: {
+    size: [number, number];
+    angle: number;
+  }[]
 
-  constructor(private painter: Painter, private config: any, private sunLightShape: any) {
+  constructor(private painter: Painter, private config: SunConfig, private sunLightShape: SunLightShape) {
     this.items = []
   }
 
@@ -19,7 +35,7 @@ export default class Sun {
     })
   }
 
-  _randomSize() {
+  _randomSize(): [number, number] {
     const safeSpan = this.config.sun.span
     const limitPoint = this.painter.width * this.config.sun.limit
     const breakPoint = this.painter.width * (this.config.sun.breakPoint || 1/4)

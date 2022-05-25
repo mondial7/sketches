@@ -1,4 +1,4 @@
-import Director from "../personnel/director"
+import Director from "../personnel/Director"
 import { ControlledExplosion } from "./ControlledExplosion"
 import { VoidInTheBlue } from "./VoidInTheBlue"
 import { WildPhoenix } from "./WildPhoenix"

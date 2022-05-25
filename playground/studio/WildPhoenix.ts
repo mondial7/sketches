@@ -1,12 +1,14 @@
-import Painter from "../personnel/painter"
-import Sun from "../canvas/sun"
+import Painter from "../personnel/Painter"
+import Sun, {SunConfig} from "../canvas/Sun"
+import {ProjectPlan} from "../canvas/Project";
+import {Renderer} from "../canvas/Renderer";
 
-export const WildPhoenix = (p5: any) => {
-  let painter: any
-  let phoenix: any
-  let phoenixConfig = {}
-  let dust: any
-  let dustConfig = {}
+export const WildPhoenix: ProjectPlan = (p5: Renderer) => {
+  let painter: Painter
+  let phoenix: Sun
+  let phoenixConfig: SunConfig
+  let dust: Sun
+  let dustConfig: SunConfig
 
   p5.setup = () => {
     phoenixConfig = {
@@ -14,13 +16,14 @@ export const WildPhoenix = (p5: any) => {
         span: p5.windowWidth/3,
         limit: 1/5
       },
+      background: "none",
       palette: ["#EDAE49","#FE4A49","#EDAE49","#FE4A49"],
       count: 128
     }
 
     painter = new Painter(p5, phoenixConfig)
 
-    phoenix = new Sun(painter, phoenixConfig, (color: any, start: any, end: any) => {
+    phoenix = new Sun(painter, phoenixConfig, (color, start, end) => {
       p5.stroke(color)
       p5.line(start, start, end, end)
     })
@@ -36,18 +39,17 @@ export const WildPhoenix = (p5: any) => {
       count: 256
     }
 
-    dust = new Sun(painter, dustConfig, (color: any, start: any, end: any) => {
+    dust = new Sun(painter, dustConfig, (color, start, end) => {
       const d = p5.random(0, 1).toFixed()
       p5.fill(color)
       p5.stroke(color)
-      p5.circle(start, end, d)
+      p5.circle(start, end, +d)
     })
 
     p5.frameRate(15)
   }
 
   p5.draw = () => {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'background' does not exist on type '{}'.
     p5.background(dustConfig.background)
     
     phoenix.fillOneMoreItem()

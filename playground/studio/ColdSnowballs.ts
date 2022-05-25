@@ -1,33 +1,34 @@
-import Painter from "../personnel/painter"
-import Sun from "../canvas/sun"
+import Painter from "../personnel/Painter"
+import Sun, {SunConfig, SunLightShape} from "../canvas/Sun"
+import {ProjectPlan} from "../canvas/Project";
+import {Renderer} from "../canvas/Renderer";
 
-export const ColdSnowballs = (p5: any) => {
-  let painter
-  let phoenix: any
-  let phoenixConfig = {}
-  let dust: any
-  let dustConfig: any = {}
-
-  const drawLettersOf = () => (color: any, start: any, end: any) => {
-    p5.fill(color)
-    p5.stroke(color)
-    p5.rect(start, end, start, end);
-  }
+export const ColdSnowballs: ProjectPlan = (p5: Renderer) => {
+  let frontLayer: Sun
+  let backLayer: Sun
+  let backLayerConfig: SunConfig
 
   p5.setup = () => {
-    phoenixConfig = {
+    const frontLayerConfig: SunConfig = {
       sun: {
         span: p5.windowWidth/3,
         limit: 1/5
       },
+      background: "none",
       palette: ["#EDAE49","#FE4A49","#EDAE49","#FE4A49"],
       count: 256
     }
 
-    painter = new Painter(p5, phoenixConfig)
-    phoenix = new Sun(painter, phoenixConfig, drawLettersOf())
+    const painter = new Painter(p5, frontLayerConfig)
+    const sunLightShape: SunLightShape = (color, start, end) => {
+      p5.fill(color)
+      p5.stroke(color)
+      p5.rect(start, end, start, end);
+    };
 
-    dustConfig = {
+    frontLayer = new Sun(painter, frontLayerConfig, sunLightShape)
+
+    backLayerConfig = {
       sun: {
         span: 0,
         limit: 1
@@ -36,20 +37,19 @@ export const ColdSnowballs = (p5: any) => {
       palette: ["#7785AC","#b1f8f2","#7785AC","#b1f8f2"],
       count: 512
     }
-
-    dust = new Sun(painter, dustConfig, drawLettersOf())
+    backLayer = new Sun(painter, backLayerConfig, sunLightShape)
   }
 
   p5.draw = () => {
-    p5.background(dustConfig.background)
+    p5.background(backLayerConfig.background)
     
-    phoenix.fillOneMoreItem()
-    dust.fillOneMoreItem()
+    frontLayer.fillOneMoreItem()
+    backLayer.fillOneMoreItem()
 
     p5.push()
-    phoenix.render()
+    frontLayer.render()
     p5.pop()
   
-    dust.render()
+    backLayer.render()
   }
 }

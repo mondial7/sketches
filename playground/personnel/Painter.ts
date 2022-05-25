@@ -1,4 +1,5 @@
 import { getRandom } from "../canvas/math"
+import {Renderer, RendererConfig} from "../canvas/Renderer";
 
 export default class Painter {
   angle: number
@@ -7,7 +8,7 @@ export default class Painter {
   centerX: number
   centerY: number
 
-  constructor(private engine: any, private config: any) {
+  constructor(private engine: Renderer, private config: RendererConfig) {
     this.angle = 0
     this.width = this.engine.windowWidth
     this.height = this.engine.windowHeight

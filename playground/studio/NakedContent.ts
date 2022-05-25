@@ -1,33 +1,33 @@
-import Painter from "../personnel/painter"
-import Sun from "../canvas/sun"
+import Painter from "../personnel/Painter"
+import Sun, {SunConfig, SunLightShape} from "../canvas/Sun"
+import {ProjectPlan} from "../canvas/Project";
+import {Renderer} from "../canvas/Renderer";
 
-export const NakedContent = (p5: any) => {
-  let painter
-  let phoenix: any
-  let phoenixConfig = {}
-  let dust: any
-  let dustConfig = {}
+export const NakedContent: ProjectPlan = (p5: Renderer) => {
+  let phoenix: Sun
+  let backLayer: Sun
+  let backLayerConfig: SunConfig
 
-  const drawPicker = (words: any) => (color: any, start: any, end: any) => {
+  const drawPicker: (words: string[]) => SunLightShape = (words) => (color, start, end) => {
     const letter = words[start % words.length]
     p5.fill(color)
     p5.text(letter, start, end);
   }
 
   p5.setup = () => {
-    phoenixConfig = {
+    const phoenixConfig: SunConfig = {
       sun: {
-        span: p5.windowWidth/3,
-        limit: 1/5
+        span: p5.windowWidth / 3,
+        limit: 1 / 5
       },
-      palette: ["#EDAE49","#FE4A49","#EDAE49","#FE4A49"],
+      background: "none",
+      palette: ["#EDAE49", "#FE4A49", "#EDAE49", "#FE4A49"],
       count: 256
-    }
-
-    painter = new Painter(p5, phoenixConfig)
+    };
+    const painter: Painter = new Painter(p5, phoenixConfig);
     phoenix = new Sun(painter, phoenixConfig, drawPicker('phoenix'.split('')))
 
-    dustConfig = {
+    backLayerConfig = {
       sun: {
         span: 0,
         limit: 1
@@ -37,20 +37,19 @@ export const NakedContent = (p5: any) => {
       count: 512
     }
 
-    dust = new Sun(painter, dustConfig, drawPicker('void'.split('')))
+    backLayer = new Sun(painter, backLayerConfig, drawPicker('void'.split('')))
   }
 
   p5.draw = () => {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'background' does not exist on type '{}'.
-    p5.background(dustConfig.background)
+    p5.background(backLayerConfig.background)
     
     phoenix.fillOneMoreItem()
-    dust.fillOneMoreItem()
+    backLayer.fillOneMoreItem()
 
     p5.push()
     phoenix.render()
     p5.pop()
   
-    dust.render()
+    backLayer.render()
   }
 }

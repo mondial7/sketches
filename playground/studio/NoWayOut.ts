@@ -1,30 +1,32 @@
-import Painter from "../personnel/painter"
-import Sun from "../canvas/sun"
+import Painter from "../personnel/Painter"
+import Sun, {SunConfig} from "../canvas/Sun"
+import {ProjectPlan} from "../canvas/Project";
+import {Renderer} from "../canvas/Renderer";
 
-export const NoWayOut = (p5: any) => {
-  let painter: any
-  let phoenix: any
-  let phoenixConfig = {}
-  let dust: any
-  let dustConfig = {}
+export const NoWayOut: ProjectPlan = (p5: Renderer) => {
+  let painter: Painter
+  let frontLayer: Sun
+  let backLayer: Sun
+  let backLayerConfig: SunConfig
 
   p5.setup = () => {
-    phoenixConfig = {
+    const phoenixConfig: SunConfig = {
       sun: {
         span: p5.windowWidth/2,
         limit: 1/7
       },
+      background: "none",
       palette: ["#EDAE49","#FE4A49","#EDAE49","#FE4A49"],
       count: 256
     }
 
     painter = new Painter(p5, phoenixConfig)
-    phoenix = new Sun(painter, phoenixConfig, (color: any, start: any, end: any) => {
+    frontLayer = new Sun(painter, phoenixConfig, (color, start, end) => {
       p5.fill(color)
       p5.rect(start, end, start/3, end/3);
     })
 
-    dustConfig = {
+    backLayerConfig = {
       sun: {
         span: 0,
         limit: 1
@@ -34,7 +36,7 @@ export const NoWayOut = (p5: any) => {
       count: 256
     }
 
-    dust = new Sun(painter, dustConfig, (color: any, start: any, end: any) => {
+    backLayer = new Sun(painter, backLayerConfig, (color, start, end) => {
       p5.push()
       p5.fill(color)
       p5.scale(0.5)
@@ -44,17 +46,16 @@ export const NoWayOut = (p5: any) => {
   }
 
   p5.draw = () => {
-    // @ts-expect-error ts-migrate(2339) FIXME: Property 'background' does not exist on type '{}'.
-    p5.background(dustConfig.background)
+    p5.background(backLayerConfig.background)
     
-    phoenix.fillOneMoreItem()
-    dust.fillOneMoreItem()
+    frontLayer.fillOneMoreItem()
+    backLayer.fillOneMoreItem()
 
     p5.push()
-    phoenix.render()
+    frontLayer.render()
     p5.pop()
     
     painter.rotateClockwise()
-    dust.render()
+    backLayer.render()
   }
 }
