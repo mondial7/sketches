@@ -34,15 +34,15 @@ const frank = new Director([
 ])
 
 const tour = setInterval(() => {
-  frank.presentsNextExposition()
+  frank.presentsNextProject()
 }, 4000)
 
 document.addEventListener("touchstart", () => {
   clearInterval(tour)
-  frank.presentsNextExposition()
+  frank.presentsNextProject()
 })
 
 document.addEventListener("click", () => {
   clearInterval(tour)
-  frank.presentsNextExposition()
+  frank.presentsNextProject()
 })
