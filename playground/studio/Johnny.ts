@@ -1,7 +1,7 @@
 import Director from "../personnel/Director";
-import { NaturalStrings } from "../artworks/NaturalStrings";
-import { NoWayOut } from "../artworks/NoWayOut";
-import { WarmHorizon } from "../artworks/WarmHorizon";
+import { NaturalStrings } from "../artworks/p5/NaturalStrings";
+import { NoWayOut } from "../artworks/p5/NoWayOut";
+import { WarmHorizon } from "../artworks/p5/WarmHorizon";
 import { Project } from "../types/Project";
 
 const johnny = new Director([

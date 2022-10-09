@@ -1,9 +1,9 @@
 import Director from "../personnel/Director";
-import { ColdSnowballs } from "../artworks/ColdSnowballs";
-import { ControlledExplosion } from "../artworks/ControlledExplosion";
-import { NakedContent } from "../artworks/NakedContent";
-import { VoidInTheBlue } from "../artworks/VoidInTheBlue";
-import { WildPhoenix } from "../artworks/WildPhoenix";
+import { ColdSnowballs } from "../artworks/p5/ColdSnowballs";
+import { ControlledExplosion } from "../artworks/p5/ControlledExplosion";
+import { NakedContent } from "../artworks/p5/NakedContent";
+import { VoidInTheBlue } from "../artworks/p5/VoidInTheBlue";
+import { WildPhoenix } from "../artworks/p5/WildPhoenix";
 import { Project } from "../types/Project";
 
 const frank = new Director([
