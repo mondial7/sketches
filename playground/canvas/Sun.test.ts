@@ -1,7 +1,7 @@
 import { describe, it, expect, jest, beforeEach } from "@jest/globals";
 import Sun, {SunConfig, SunLightShape} from "./Sun";
 import Painter from "../personnel/Painter";
-import {Renderer} from "./Renderer";
+import {Renderer} from "../types/Renderer";
 
 class p5Mock {
   createCanvas = jest.fn();

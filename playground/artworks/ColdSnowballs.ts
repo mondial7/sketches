@@ -1,7 +1,7 @@
 import Painter from "../personnel/Painter"
 import Sun, {SunConfig, SunLightShape} from "../canvas/Sun"
-import {ProjectPlan} from "../canvas/Project";
-import {Renderer} from "../canvas/Renderer";
+import {ProjectPlan} from "../types/Project";
+import {Renderer} from "../types/Renderer";
 
 export const ColdSnowballs: ProjectPlan = (p5: Renderer) => {
   let frontLayer: Sun

@@ -1,7 +1,7 @@
 import p5 from "p5";
-import { ArtWork } from "./ArtWork";
-import { ProjectPlan } from "./Project";
-import { Renderer } from "./Renderer";
+import { ArtWork } from "../types/ArtWork";
+import { ProjectPlan } from "../types/Project";
+import { Renderer } from "../types/Renderer";
 
 export class Exhibition {
   title: string;

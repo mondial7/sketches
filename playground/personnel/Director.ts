@@ -1,14 +1,7 @@
 import { getRandom } from "../canvas/math";
-import { Project } from "../canvas/Project";
+import { Project } from "../types/Project";
 import { Exhibition } from "../canvas/Exhibition";
-import { ArtWork } from "../canvas/ArtWork";
-
-const projectToArtWorks = (project: Project): ArtWork[] => {
-  return Object.entries(project).map(([title, projectPlan]) => ({
-    title,
-    projectPlan,
-  }));
-};
+import { ArtWork } from "../types/ArtWork";
 
 export default class Director {
   portfolio: Project[];
@@ -38,8 +31,7 @@ export default class Director {
     const nextProjectIndex = getRandom(1, this.portfolio.length) - 1;
     const nextProject = this.portfolio[nextProjectIndex];
 
-    const artWorks: ArtWork[] = projectToArtWorks(nextProject);
-    artWorks.forEach((artWork: ArtWork, i) => {
+    nextProject.getArtWorks().forEach((artWork: ArtWork, i) => {
       this.appendTitle(artWork.title);
       const anchor = this.getLayerNode(i);
 

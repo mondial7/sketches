@@ -1,6 +1,6 @@
 import {getRandom} from "./math"
 import Painter from "../personnel/Painter";
-import {RendererConfig} from "./Renderer";
+import {RendererConfig} from "../types/Renderer";
 
 export interface SunConfig extends RendererConfig {
   palette: string[];

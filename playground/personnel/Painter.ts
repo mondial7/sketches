@@ -1,4 +1,4 @@
-import {Renderer, RendererConfig} from "../canvas/Renderer";
+import {Renderer, RendererConfig} from "../types/Renderer";
 
 export default class Painter {
   angle: number
