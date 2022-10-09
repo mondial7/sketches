@@ -32,19 +32,11 @@ export default class Director {
     const nextProject = this.portfolio[nextProjectIndex];
 
     nextProject.getArtWorks().forEach((artWork: ArtWork, i) => {
-      this.appendTitle(artWork.title);
       const anchor = this.getLayerNode(i);
 
       const exhibition = new Exhibition(artWork, anchor);
       this.exhibitions.push(exhibition);
     });
-  }
-
-  private appendTitle(title: string) {
-    const titleElement = document.getElementById("title");
-    if (titleElement) {
-      titleElement.innerHTML = title;
-    }
   }
 
   private getLayerNode(i: number): HTMLElement | undefined {

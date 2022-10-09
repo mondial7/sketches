@@ -13,14 +13,22 @@ export class Exhibition {
     this.title = artWork.title;
     this.projectPlan = artWork.projectPlan;
     this.anchor = anchor;
-    this.renderer = new Renderer(this.projectPlan, this.anchor)
+    this.renderer = new Renderer(this.projectPlan, this.anchor);
   }
 
   render() {
-    this.renderer.render()
+    this.updateTitleDOM(this.title);
+    this.renderer.render();
   }
 
   cleanUp() {
     this.renderer.remove();
+  }
+
+  private updateTitleDOM(title: string) {
+    const titleElement = document.getElementById("title");
+    if (titleElement) {
+      titleElement.innerHTML = title;
+    }
   }
 }
