@@ -44,7 +44,6 @@ export default class Director {
   constructor(portfolio: Project[]) {
     this.portfolio = portfolio;
     this.exhibitions = [];
-    this.presentsNextProject();
   }
 
   presentsNextProject() {
@@ -53,11 +52,11 @@ export default class Director {
     this.openStudio();
   }
 
-  private openStudio() {
+  openStudio() {
     this.exhibitions.forEach((e) => e.render());
   }
 
-  private closeStudio() {
+  closeStudio() {
     this.exhibitions.forEach((e) => e.cleanUp());
     this.exhibitions = [];
   }
