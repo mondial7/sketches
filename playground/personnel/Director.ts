@@ -1,12 +1,7 @@
-import p5 from "p5";
 import { getRandom } from "../canvas/math";
-import { Renderer } from "../canvas/Renderer";
-import { Project, ProjectPlan } from "../canvas/Project";
-
-type ArtWork = {
-  title: string;
-  projectPlan: ProjectPlan;
-};
+import { Project } from "../canvas/Project";
+import { Exhibition } from "../canvas/Exhibition";
+import { ArtWork } from "../canvas/ArtWork";
 
 const projectToArtWorks = (project: Project): ArtWork[] => {
   return Object.entries(project).map(([title, projectPlan]) => ({
@@ -14,28 +9,6 @@ const projectToArtWorks = (project: Project): ArtWork[] => {
     projectPlan,
   }));
 };
-
-class Exhibition {
-  title: string;
-  projectPlan: ProjectPlan;
-  anchor: HTMLElement | undefined;
-
-  private renderer: Renderer | undefined;
-
-  constructor(artWork: ArtWork, anchor?: HTMLElement) {
-    this.title = artWork.title;
-    this.projectPlan = artWork.projectPlan;
-    this.anchor = anchor;
-  }
-
-  render() {
-    this.renderer = new p5(this.projectPlan, this.anchor);
-  }
-
-  cleanUp() {
-    this.renderer?.remove();
-  }
-}
 
 export default class Director {
   portfolio: Project[];
