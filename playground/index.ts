@@ -1,12 +1,12 @@
-import Director from "../personnel/Director"
-import { ControlledExplosion } from "./ControlledExplosion"
-import { VoidInTheBlue } from "./VoidInTheBlue"
-import { WildPhoenix } from "./WildPhoenix"
-import { ColdSnowballs } from "./ColdSnowballs"
-import { NoWayOut } from "./NoWayOut"
-import { WarmHorizon } from "./WarmHorizon"
-import { NaturalStrings } from "./NaturalStrings"
-import { NakedContent } from "./NakedContent"
+import Director from "./personnel/Director"
+import { ControlledExplosion } from "./artworks/ControlledExplosion"
+import { VoidInTheBlue } from "./artworks/VoidInTheBlue"
+import { WildPhoenix } from "./artworks/WildPhoenix"
+import { ColdSnowballs } from "./artworks/ColdSnowballs"
+import { NoWayOut } from "./artworks/NoWayOut"
+import { WarmHorizon } from "./artworks/WarmHorizon"
+import { NaturalStrings } from "./artworks/NaturalStrings"
+import { NakedContent } from "./artworks/NakedContent"
 
 const frank = new Director([
   {
