@@ -1,4 +1,4 @@
-import Director from "../personnel/Director";
+import Director from "../studio/Director";
 import { NaturalStrings } from "../artworks/p5/NaturalStrings";
 import { NoWayOut } from "../artworks/p5/NoWayOut";
 import { WarmHorizon } from "../artworks/p5/WarmHorizon";

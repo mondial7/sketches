@@ -1,4 +1,4 @@
-import { RenderingEngine } from "./Renderer";
+import { RenderingEngine } from "./RenderingEngine";
 import { ArtWork } from "./ArtWork";
 
 export type ProjectPlan = (renderer: RenderingEngine) => void;

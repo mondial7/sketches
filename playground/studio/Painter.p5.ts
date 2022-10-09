@@ -1,5 +1,5 @@
 import p5 from "p5";
-import { RendererConfig } from "../types/Renderer";
+import { PainterConfig } from "../types/PainterConfig";
 
 export default class Painter {
   angle: number;
@@ -8,7 +8,7 @@ export default class Painter {
   centerX: number;
   centerY: number;
 
-  constructor(private engine: p5, private config: RendererConfig) {
+  constructor(private engine: p5, private config: PainterConfig) {
     this.angle = 0;
     this.width = this.engine.windowWidth;
     this.height = this.engine.windowHeight;

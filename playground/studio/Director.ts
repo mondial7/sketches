@@ -1,6 +1,6 @@
-import { getRandom } from "../canvas/math";
+import { getRandom } from "../layouts/math";
 import { Project } from "../types/Project";
-import { Exhibition } from "../canvas/Exhibition";
+import { Exhibition } from "./Exhibition";
 import { ArtWork } from "../types/ArtWork";
 
 export default class Director {

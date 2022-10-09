@@ -1,5 +1,5 @@
-import frank from "./studio/Frank";
-import johnny from "./studio/Johnny";
+import frank from "./directors/Frank";
+import johnny from "./directors/Johnny";
 
 document.getElementById("director-Frank")?.addEventListener("click", () => {
   johnny.closeStudio();

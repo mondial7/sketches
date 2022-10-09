@@ -1,8 +1,9 @@
-import { getRandom } from "./math";
-import Painter from "../personnel/Painter.p5";
-import { RendererConfig } from "../types/Renderer";
+import { getRandom } from "./../math";
+import Painter from "../../studio/Painter.p5";
+import { LayoutHandler } from "../../types/LayoutHandler";
+import { PainterConfig } from "../../types/PainterConfig";
 
-export interface SunConfig extends RendererConfig {
+export interface SunConfig extends PainterConfig {
   palette: string[];
   count: number;
   sun: {
@@ -13,11 +14,6 @@ export interface SunConfig extends RendererConfig {
 }
 
 export type SunLightShape = (color: string, start: number, end: number) => void;
-
-interface LayoutHandler {
-  fillOneMoreItem: () => void;
-  render: () => void;
-}
 
 export default class Sun implements LayoutHandler {
   items: {

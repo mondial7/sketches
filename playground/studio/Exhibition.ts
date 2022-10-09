@@ -1,6 +1,6 @@
 import { ArtWork } from "../types/ArtWork";
 import { ProjectPlan } from "../types/Project";
-import { Renderer } from "../types/Renderer";
+import { Renderer } from "./Renderer";
 
 export class Exhibition {
   title: string;

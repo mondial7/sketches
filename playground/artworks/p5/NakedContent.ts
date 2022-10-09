@@ -1,6 +1,6 @@
-import Painter from "../../personnel/Painter.p5";
+import Painter from "../../studio/Painter.p5";
 import p5 from "p5";
-import Sun, { SunConfig, SunLightShape } from "../../canvas/Sun";
+import Sun, { SunConfig, SunLightShape } from "../../layouts/p5/Sun";
 import { ProjectPlan } from "../../types/Project";
 
 export const NakedContent: ProjectPlan = (p5: p5) => {

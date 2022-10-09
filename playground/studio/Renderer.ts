@@ -1,11 +1,6 @@
+import { ProjectPlan } from "../types/Project";
+import { RenderingEngine } from "../types/RenderingEngine";
 import p5 from "p5";
-import { ProjectPlan } from "./Project";
-
-export type RendererConfig = {
-  background: string
-}
-
-export type RenderingEngine = p5
 
 export class Renderer {
   static readonly instance: Renderer

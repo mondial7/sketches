@@ -1,7 +1,7 @@
-import Painter from "../../personnel/Painter.p5";
+import Painter from "../../studio/Painter.p5";
 import p5 from "p5";
-import Sun, { SunConfig } from "../../canvas/Sun";
-import { getRandom } from "../../canvas/math";
+import Sun, { SunConfig } from "../../layouts/p5/Sun";
+import { getRandom } from "../../layouts/math";
 import { ProjectPlan } from "../../types/Project";
 
 export const NaturalStrings: ProjectPlan = (p5: p5) => {

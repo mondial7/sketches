@@ -1,4 +1,4 @@
-import Director from "../personnel/Director";
+import Director from "../studio/Director";
 import { ColdSnowballs } from "../artworks/p5/ColdSnowballs";
 import { ControlledExplosion } from "../artworks/p5/ControlledExplosion";
 import { NakedContent } from "../artworks/p5/NakedContent";
