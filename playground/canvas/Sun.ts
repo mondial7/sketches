@@ -1,5 +1,5 @@
 import { getRandom } from "./math";
-import Painter from "../personnel/Painter";
+import Painter from "../personnel/Painter.p5";
 import { RendererConfig } from "../types/Renderer";
 
 export interface SunConfig extends RendererConfig {

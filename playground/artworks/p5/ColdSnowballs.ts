@@ -1,4 +1,4 @@
-import Painter from "../../personnel/Painter";
+import Painter from "../../personnel/Painter.p5";
 import p5 from "p5";
 import Sun, { SunConfig, SunLightShape } from "../../canvas/Sun";
 import { ProjectPlan } from "../../types/Project";

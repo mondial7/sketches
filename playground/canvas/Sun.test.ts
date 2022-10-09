@@ -1,6 +1,6 @@
 import { describe, it, expect, jest, beforeEach } from "@jest/globals";
 import Sun, {SunConfig, SunLightShape} from "./Sun";
-import Painter from "../personnel/Painter";
+import Painter from "../personnel/Painter.p5";
 import {RenderingEngine} from "../types/Renderer";
 
 class p5Mock {
