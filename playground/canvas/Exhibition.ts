@@ -1,4 +1,3 @@
-import p5 from "p5";
 import { ArtWork } from "../types/ArtWork";
 import { ProjectPlan } from "../types/Project";
 import { Renderer } from "../types/Renderer";
@@ -8,19 +7,20 @@ export class Exhibition {
   projectPlan: ProjectPlan;
   anchor: HTMLElement | undefined;
 
-  private renderer: Renderer | undefined;
+  private renderer: Renderer;
 
   constructor(artWork: ArtWork, anchor?: HTMLElement) {
     this.title = artWork.title;
     this.projectPlan = artWork.projectPlan;
     this.anchor = anchor;
+    this.renderer = new Renderer(this.projectPlan, this.anchor)
   }
 
   render() {
-    this.renderer = new p5(this.projectPlan, this.anchor);
+    this.renderer.render()
   }
 
   cleanUp() {
-    this.renderer?.remove();
+    this.renderer.remove();
   }
 }

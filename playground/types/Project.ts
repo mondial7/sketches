@@ -1,7 +1,7 @@
-import { Renderer } from "./Renderer";
+import { RenderingEngine } from "./Renderer";
 import { ArtWork } from "./ArtWork";
 
-export type ProjectPlan = (renderer: Renderer) => void;
+export type ProjectPlan = (renderer: RenderingEngine) => void;
 export type ProjectDraft = { [title: string]: ProjectPlan };
 
 export class Project {

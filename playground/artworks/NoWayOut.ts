@@ -1,9 +1,9 @@
 import Painter from "../personnel/Painter"
 import Sun, {SunConfig} from "../canvas/Sun"
 import {ProjectPlan} from "../types/Project";
-import {Renderer} from "../types/Renderer";
+import {RenderingEngine} from "../types/Renderer";
 
-export const NoWayOut: ProjectPlan = (p5: Renderer) => {
+export const NoWayOut: ProjectPlan = (p5: RenderingEngine) => {
   let painter: Painter
   let frontLayer: Sun
   let backLayer: Sun

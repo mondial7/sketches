@@ -1,9 +1,9 @@
 import Painter from "../personnel/Painter"
 import Sun, {SunConfig, SunLightShape} from "../canvas/Sun"
 import {ProjectPlan} from "../types/Project";
-import {Renderer} from "../types/Renderer";
+import {RenderingEngine} from "../types/Renderer";
 
-export const NakedContent: ProjectPlan = (p5: Renderer) => {
+export const NakedContent: ProjectPlan = (p5: RenderingEngine) => {
   let phoenix: Sun
   let backLayer: Sun
   let backLayerConfig: SunConfig

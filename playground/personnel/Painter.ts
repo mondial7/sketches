@@ -1,4 +1,4 @@
-import {Renderer, RendererConfig} from "../types/Renderer";
+import {RenderingEngine, RendererConfig} from "../types/Renderer";
 
 export default class Painter {
   angle: number
@@ -7,7 +7,7 @@ export default class Painter {
   centerX: number
   centerY: number
 
-  constructor(private engine: Renderer, private config: RendererConfig) {
+  constructor(private engine: RenderingEngine, private config: RendererConfig) {
     this.angle = 0
     this.width = this.engine.windowWidth
     this.height = this.engine.windowHeight

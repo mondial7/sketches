@@ -1,7 +1,7 @@
 import { describe, it, expect, jest, beforeEach } from "@jest/globals";
 import Sun, {SunConfig, SunLightShape} from "./Sun";
 import Painter from "../personnel/Painter";
-import {Renderer} from "../types/Renderer";
+import {RenderingEngine} from "../types/Renderer";
 
 class p5Mock {
   createCanvas = jest.fn();
@@ -30,7 +30,7 @@ describe("Sun", () => {
       count: 2,
       palette: []
     }
-    const rendererMock = new p5Mock() as unknown as Renderer;
+    const rendererMock = new p5Mock() as unknown as RenderingEngine;
     painter = new Painter(rendererMock, config)
     sunLightShape = jest.fn();
     sun = new Sun(painter, config, sunLightShape);
