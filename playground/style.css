@@ -26,3 +26,27 @@ canvas {
   font-size: 14px;
   border-radius: 3px;
 }
+
+.layer__controllers {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.directors_group {
+  margin: 5px 7px;
+}
+
+.directors_group__director {
+  cursor: pointer;
+  padding: 5px 7px;
+  margin: 5px 0px;
+  text-align: center;
+  background-color: #f2f2f2;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.directors_group__director:hover {
+  background-color: #e2e2e2;
+}
